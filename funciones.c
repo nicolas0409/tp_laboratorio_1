@@ -14,20 +14,15 @@ int resta(int numero1,int numero2)
 
     return numero1-numero2;
 }
-float division(int numero1,int numero2)
+float division(int numero1,int numero2,float *resultado)
 {
-
-    if(numero2!=0)
+int  retorno=0;
+    if(numero2)//aseguro que el divisor no sea 0
                     {
-
-                        return((float)numero1/(float)numero2);
-
+                        *resultado=((float)numero1/(float)numero2);
+                        retorno=1;
                     }
-                    else
-                    {
-                        printf("la division por 0 es indefinida ingrese otro dividendo");
-                        system("pause");
-                    }
+    return retorno;
 }
 int multiplicacion(int numero1,int numero2)
 {
@@ -39,7 +34,7 @@ int multiplicacion(int numero1,int numero2)
 
 
 
-int factorial(int numero1)
+double factorial(int numero1)
 {
 if(numero1<0)
 {
@@ -56,4 +51,3 @@ if(numero1==0)
 
 
 }
-
