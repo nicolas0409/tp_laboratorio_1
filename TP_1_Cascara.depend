@@ -11,3 +11,15 @@
 1491071225 source:c:\users\nicolas\desktop\tp_1_cascara\funciones.c
 	"funciones.h"
 
+1491616026 source:c:\users\nicolas\proyectos\tp_laboratorio_1\funciones.c
+	"funciones.h"
+
+1491616057 c:\users\nicolas\proyectos\tp_laboratorio_1\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	<conio.h>
+
+1491617822 source:c:\users\nicolas\proyectos\tp_laboratorio_1\main.c
+	"funciones.h"
+

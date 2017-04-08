@@ -145,9 +145,18 @@ int main()
                    system("cls");
                     printf("El resultado de la suma es %d\n",suma(numero1,numero2));
                     printf("El resultado de la resta es %d\n",resta(numero1,numero2));
-                    printf("El resultado de la division es %f\n",resultado);
-                    numero1>=1?printf("El resultado de la multiplicacion es %d\n",multiplicacion(numero1,numero2)):printf("solo se  pueden hallar factoriales con base positiva\n");
-                    printf("El resultado de el factorial es %d\n",factorial(numero1));
+                    if(division(numero1,numero2,&resultado))
+                    {
+                     printf("El resultado de la division es %f\n",resultado);
+                    }
+
+                    else
+                    {
+                    printf("la division entre 0 no existe \n");
+                    }
+
+                    printf("El resultado de la multiplicacion es %d\n",multiplicacion(numero1,numero2));
+                    (numero1>=0)? printf("El resultado de el factorial es %.0f\n",factorial(numero1)):printf("solo se  pueden hallar factoriales con base positiva\n");
                     system("pause");
                 }
                 else
