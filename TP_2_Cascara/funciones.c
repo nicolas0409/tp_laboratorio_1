@@ -103,7 +103,7 @@ memset((void*)grafica2,'\0',30);
                     lista[i].edad>=36?(grafica[i][2]='*'):(grafica[i][2]=' ');
                     }
                 }
-                for(j=0;j<3;j++)
+                for(j=0;j<3;j++)//ordeno los asterisco  y los espcios en blanco
                 {
                     k=0;
                     for(i=0;i<TAM;i++)
