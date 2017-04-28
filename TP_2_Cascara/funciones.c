@@ -88,43 +88,41 @@ int estadoeliminar=0;
 
  void graficar(EPersona lista[])
  {
-    int i,j,k;
+    int i,j,k,l,m;
     char grafica [TAM][3];
     char grafica2 [TAM][3];
 memset((void*)grafica,'\0',30);
 memset((void*)grafica2,'\0',30);
 
-   for(i=0;i<TAM;i++)
-                {
-                    if(lista[i].estado==1)
+   k=0;
+   l=0;
+   m=0;
+    for(i=0;i<10;i++)
+    {
+            if(lista[i].estado==1)
                     {
-                    lista[i].edad<18?(grafica[i][0]='*'):(grafica[i][0]=' ');
-                   (((lista[i].edad)>=18)&&(lista[i].edad)<36)?(grafica[i][1]='*'):(grafica[i][1]=' ');
-                    lista[i].edad>=36?(grafica[i][2]='*'):(grafica[i][2]=' ');
+                       if(lista[i].edad<18)
+                       {grafica[k][0]='*';
+                       k++;
+                        }
+                        else if(lista[i].edad>=18&&lista[i].edad<36)
+                        {
+                            grafica[l][1]='*';
+                            l++;
+                        }
+                        else if(lista[i].edad>=36)
+                        {
+                            grafica[m][2]='*';
+                            m++;
+                        }
                     }
                 }
-                for(j=0;j<3;j++)//ordeno los asterisco  y los espcios en blanco
-                {
-                    k=0;
-                    for(i=0;i<TAM;i++)
-                    {
-                        if(grafica[i][j]=='*')
-                        {
-                          grafica2[k][j]= grafica[i][j];
-                          k++;
-                        }
-                        else
-                        {
-                         grafica2[i][j]=' ';
-                        }
 
-                    }
-                }
                 for(j=(TAM-1);j>=0;j--)
                 {
                     for(i=0;i<3;i++)
                         {
-                            printf("%c       \t",grafica2[j][i]);
+                            printf("%c       \t",grafica[j][i]);
                         }
                         printf("\n");
                 }
@@ -138,13 +136,15 @@ memset((void*)grafica2,'\0',30);
      EPersona aux;
      int i;
      int j;
+for(i=0;i<tamanio;i++)
+{
+    strlwr(lista[i].nombre);
+}
 
 for(j=0;j<tamanio;j++)
 {
 
-strlwr(lista[j].nombre);
-        strlwr(lista[j-1].nombre);
-    for(i=1+j;i<tamanio-1;i++)
+for(i=1+j;i<tamanio;i++)
     {
 
        if(strcmp((lista[j].nombre),lista[i].nombre)>0)
@@ -160,3 +160,25 @@ strlwr(lista[j].nombre);
 
 
  }
+
+ int validar_numero(char numero[],int tamanio)
+{
+   int dni;
+  int i;
+   int validacion=1;
+for(i=0;i<tamanio&&numero[i]!='\0';i++)
+{
+    if(isdigit(numero[i])==0)
+    {
+        validacion=-1;
+        break;
+    }
+}
+ if(validacion==1)
+ {
+     dni=atoll(numero);
+    validacion=dni;
+ }
+ return validacion;
+}
+

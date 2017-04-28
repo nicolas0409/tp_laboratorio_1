@@ -7,8 +7,11 @@ int main()
 
     char seguir='s';
     int opcion=0,indice;
-    int dni_temporal,edad_temporal,auxiliar;
+    int auxiliar,edad_temporal,dni_temporal;
     char nombre_temporal[50];
+    char chrdni_temporal[TAMDNI];
+    char chredad_temporal[TAMEDAD];
+     long long int intdni;
     EPersona lista[TAM];
 
     int i;
@@ -21,7 +24,7 @@ int main()
 
    int dnih[TAM]={1003445,101344,102456,1034643,1043546,345667,456732,6796543,34568579,247899};
     int edadh[TAM]={15,12,34,23,67,24,45,75,35,3};
-     char nombreh[TAM][30]={"nicolas gonzalez","camila ardila","laura rodriguez","nicolas","daniel","martin","nicolas augusto","juan","sergio","lorena"};
+     char nombreh[TAM][50]={"nicolas gonzalez","laura rodriguez nacitllo","laura rodriguez","laura rod","daniel","martin","nicolas augusto","juan","sergio","lorena"};
     int estadoh[TAM]={1,1,1,1,1,1,1,1,1,1};
 
 
@@ -65,15 +68,50 @@ int main()
                     {
                          fflush(stdin);
                          printf("ingrese nombre\n");
-                        fgets(nombre_temporal,20,stdin);
+                        fgets(nombre_temporal,50,stdin);
                         nombre_temporal[strlen(nombre_temporal)-1]='\0';
 
                         printf("ingrese la edad");
                         fflush(stdin);
-                        scanf("%d",&edad_temporal);
+                         fgets(chredad_temporal,TAMEDAD,stdin);
+                         chredad_temporal[strlen(chredad_temporal)-1]='\0';
                         printf("ingrese el dni");
-                        scanf("%d",&dni_temporal);
-                        auxiliar=agregapersona(lista,nombre_temporal,dni_temporal,edad_temporal,indice);
+                        fflush(stdin);
+                        fgets(chrdni_temporal,TAMDNI,stdin);
+                         chrdni_temporal[strlen(chrdni_temporal)-1]='\0';
+                        intdni=validar_numero(chrdni_temporal,TAMDNI);
+                        if(intdni==-1)
+                        {
+                            printf("el numero debe ser solo numeros sin caracteres alfnumericos\n");
+                            system("pause");
+                            system("cls");
+                            break;
+                        }
+                         if(intdni<0||intdni>999999999)
+                         {
+                             printf("el nuemro  de dni debe ser entre 0 y 999999999");
+                             system("pause");
+                            system("cls");
+                             break;
+
+                         }
+                        edad_temporal=validar_numero(chredad_temporal,TAMEDAD);
+                        if(edad_temporal==-1)
+                        {
+                            printf("la edad debe ser solo numeros sin caracteres alfnumericos\n");
+                            system("pause");
+                            system("cls");
+                            break;
+
+                        }
+                        else if(edad_temporal<0||edad_temporal>140)
+                        {
+                            printf(" la edad debe ser un numero entre 0 y 140 anios vuelvalo a intentar\n");
+                              system("pause");
+                            system("cls");
+                            break;
+                        }
+                        auxiliar=agregapersona(lista,nombre_temporal,intdni,edad_temporal,indice);
                         if(auxiliar>0)
                         {
                             printf("persona agregada correctamente\n");
@@ -111,23 +149,36 @@ int main()
 
                     printf("ingrese el dni de la persona que desea borrar sin puntos\n");
                     fflush(stdin);
-                    if(scanf("%d",&dni_temporal))
+                    fgets(chrdni_temporal,TAMDNI,stdin);
+                    chrdni_temporal[strlen(chrdni_temporal)-1]='\0';
+                    dni_temporal=validar_numero(chrdni_temporal,TAMDNI);
+                    if(dni_temporal>=0)
                     {
 
-
-                        if(borrar_persona(lista,dni_temporal))
+                        if(dni_temporal>0&&dni_temporal<999999999)
                         {
-                            printf("persona eliminada correctamente\n");
-                            system("pause");
-                            system("cls");
-                            break;
+                            if(borrar_persona(lista,dni_temporal))
+                            {
+                                printf("persona eliminada correctamente\n");
+                                system("pause");
+                                system("cls");
+                                break;
+                            }
+                            else
+                            {
+
+                                printf("dni ingresado no existe en la base de datos\n");
+                                system("pause");
+                                system("cls");
+                            }
                         }
                         else
                         {
-                            printf("dni ingresado no existe en la base de datos\n");
+                            printf("el numero de dni tiene que ser un numero mayor que 0 y menor que 999999999\n");
                             system("pause");
                             system("cls");
                         }
+
                     }
                     else
                     {

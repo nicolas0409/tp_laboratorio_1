@@ -6,6 +6,8 @@
 #include <ctype.h>
 
 #define TAM 10
+#define TAMDNI 14
+#define TAMEDAD 5
 typedef struct {
 
     char nombre[50];
@@ -48,6 +50,9 @@ int agregapersona(EPersona lista[],char nombre[],int dni,int edad,int indice);
  void graficar(EPersona lista[]);
 
  void ordenar(EPersona lista[],int tamanio);
+
+ int validar_numero (char numero[],int tamanio);
+
 
 
 #endif // FUNCIONES_H_INCLUDED
