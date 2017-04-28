@@ -11,7 +11,7 @@ int main()
     char nombre_temporal[50];
     char chrdni_temporal[TAMDNI];
     char chredad_temporal[TAMEDAD];
-     long long int intdni;
+      int intdni;
     EPersona lista[TAM];
 
     int i;
@@ -20,31 +20,7 @@ int main()
     for(i=0;i<TAM;i++){
       lista[i].estado=0;//inicializo el vector de personas en 0 incluyendo el estado
     }
-     ////////////////////////////////7
 
-   int dnih[TAM]={1003445,101344,102456,1034643,1043546,345667,456732,6796543,34568579,247899};
-    int edadh[TAM]={15,12,34,23,67,24,45,75,35,3};
-     char nombreh[TAM][50]={"nicolas gonzalez","laura rodriguez nacitllo","laura rodriguez","laura rod","daniel","martin","nicolas augusto","juan","sergio","lorena"};
-    int estadoh[TAM]={1,1,1,1,1,1,1,1,1,1};
-
-
-
-     for(i=0; i<TAM;i++)
-    {
-        lista[i].dni = dnih[i];
-        strcpy(lista[i].nombre, nombreh[i]);
-        lista[i].edad =edadh[i];
-        lista[i].estado = estadoh[i];
-
-    }
-
-
-
-
-
-
-
-    //////////////////////////////////
 
 
     while(seguir=='s')
@@ -190,12 +166,12 @@ int main()
                     break;
                 case 3:
                 ordenar(lista,TAM);
-
+                    printf("Nombre\t\t\t\t\t\t\t\tDNI\t\tEdad\n");
                     for(i=0;i<TAM;i++)
                     {
                         if(lista[i].estado)
                         {
-                          printf("%s\t%d\t%d\n",lista[i].nombre,lista[i].dni,lista[i].edad);
+                          printf("%50s\t%10d\t%10d\n",lista[i].nombre,lista[i].dni,lista[i].edad);
 
                         }
 
