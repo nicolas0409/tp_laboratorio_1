@@ -91,8 +91,8 @@ int estadoeliminar=0;
     int i,j,k,l,m;
     char grafica [TAM][3];
     char grafica2 [TAM][3];
-memset((void*)grafica,'\0',30);
-memset((void*)grafica2,'\0',30);
+memset((void*)grafica,'\0',TAM*3);
+memset((void*)grafica2,'\0',TAM*3);
 
    k=0;
    l=0;
