@@ -97,7 +97,7 @@ memset((void*)grafica2,'\0',30);
    k=0;
    l=0;
    m=0;
-    for(i=0;i<10;i++)
+    for(i=0;i<TAM;i++)
     {
             if(lista[i].estado==1)
                     {

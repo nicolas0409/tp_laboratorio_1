@@ -5,7 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define TAM 10
+#define TAM 20
 #define TAMDNI 14
 #define TAMEDAD 5
 typedef struct {
