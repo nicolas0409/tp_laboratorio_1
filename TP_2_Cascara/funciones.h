@@ -69,7 +69,7 @@ int agregapersona(EPersona lista[],char nombre[],int dni,int edad,int indice);
  * @return  retorna -1 si hay algun caracter no numerico o retorna el caracter ingresado en forma de char* a  entero
  */
 
- int validar_numero (char numero[],int tamanio);
+
 
 
 
