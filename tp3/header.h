@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#define TAMNOMBRES 20
-#define TAMDESCRIB  100
+#define TAMNOMBRES 40
+#define TAMDESCRIB  200
 
 typedef struct{
     char titulo[TAMNOMBRES];
@@ -125,6 +125,14 @@ FILE*  abrirarchivo(FILE *archivo,char nombrearchivo[],char modo[]);
 
 int comprueba_pelicula(char nombrearch[],char pelicula_buscar[],EMovie* vpmovie,int cantpelis);
 
+
+/** \brief
+ *  modifica del archivo .dat
+ * \param nombrearchivo[] char   nombrede archivo que buscara o creara
+ * \param EMovie* puntero a  una lista de estructuras emovie
+ * \return int retorna 1 si la pelicula existe 0 si no
+ *
+ */
 
 int modificarpelicula(EMovie* pmovie);
 #endif // FUNCIONES_H_INCLUDED

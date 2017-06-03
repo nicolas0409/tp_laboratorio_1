@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1496447117 source:c:\users\alumno\desktop\tp3\main.c
+	"header.h"
+
+1496447422 c:\users\alumno\desktop\tp3\header.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1496447536 source:c:\users\alumno\desktop\tp3\funciones.c
+	"header.h"
+
+1496450462 source:c:\users\alumno\desktop\correguido\funciones.c
+	"header.h"
+
+1496449794 c:\users\alumno\desktop\correguido\header.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1496447117 source:c:\users\alumno\desktop\correguido\main.c
+	"header.h"
+
+1496450464 source:c:\users\nicolas\proyectos\tp_laboratorio_1\tp3\funciones.c
+	"header.h"
+
+1496449796 c:\users\nicolas\proyectos\tp_laboratorio_1\tp3\header.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1496450598 source:c:\users\nicolas\proyectos\tp_laboratorio_1\tp3\main.c
+	"header.h"
+

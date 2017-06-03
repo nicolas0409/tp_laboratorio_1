@@ -138,7 +138,7 @@ int agregarPelicula(EMovie* pmovie, int* posicionagregar)
 archivo=abrirarchivo(archivo,"peliculas.dat","wb");
     if(archivo==NULL)
     {
-        printf("error al abrir el archivo");
+        printf("error al abrir el archivo\n");
         free(pmovie);
 
         exit(0);
@@ -147,9 +147,10 @@ archivo=abrirarchivo(archivo,"peliculas.dat","wb");
     while(comprueba_pelicula("peliculas.dat",(pmovie+(contador))->titulo,pmovie,contador)==1)
     {
       printf("pelicula ya existente ingrese otra\n");
+       system("pause");
+      system("cls");
       getString("ingrese  titulo\n ",(pmovie+(contador))->titulo,TAMNOMBRES);
-      //system("pause");
-      //system("cls")
+
     }
     getString("ingrese   genero\n",(pmovie+(contador))->genero,TAMNOMBRES);
     (pmovie+(contador))->duracion=getValidInt("ingrese duracion en minutos\n","error debe ser un numero\n",0,500,5);
@@ -401,21 +402,27 @@ int modificarpelicula(EMovie* pmovie)
                     {
                     case 1:
                         getString("ingrese  titulo\n ",(pmovie+i)->titulo,TAMNOMBRES);
+                         system("pause");
+                        system("cls");
                         break;
                     case 2:
                         getString("ingrese   genero\n",(pmovie+(i))->genero,TAMNOMBRES);
+                         system("pause");
+                        system("cls");
                         break;
                     case 3:
                         (pmovie+(i))->duracion=getValidInt("ingrese duracion en minutos\n","error debe ser un numero\n",0,500,5);
                         break;
-                        getString("ingrese   describcion\n",(pmovie+(i))->descripcion,TAMDESCRIB);
+
                      case 4:
-                        (pmovie+(i))->puntaje=getValidInt("ingrese puntaje de 1 a 10\n","debe ser un numero\n",1,10,4);
+                        getString("ingrese   describcion\n",(pmovie+(i))->descripcion,TAMDESCRIB);
                         break;
                       case 5:
-                        getString("ingrese   la url\n",(pmovie+(i))->linkImagen,TAMDESCRIB);
+                        (pmovie+(i))->puntaje=getValidInt("ingrese puntaje de 1 a 10\n","debe ser un numero\n",1,10,4);
                        break;
-
+                    case 6:
+                        getString("ingrese   la url\n",(pmovie+(i))->linkImagen,TAMDESCRIB);
+                        break;
 
                     default:
                         break;
@@ -482,7 +489,7 @@ char footer[]={"</div></div><script src='js/jquery-1.11.3.min.js'></script><scri
 
 char link[]={"<article class='col-md-4 article-intro'><a href='#'><img class='img-responsive img-rounded' src='"};
 
-char titulo[]={"' alt=''></a><h3><a href='#'>"};
+char titulo[]={"' alt='error al cargar la imagen'></a><h3><a href='#'>"};
 
 char genero[]={"</a></h3><ul><li>Genero:"};
 

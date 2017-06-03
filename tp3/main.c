@@ -26,14 +26,20 @@ int main()
                 pMovie=(void*)malloc(sizeof(EMovie));
                 pMovie->estado=0;
                 agregarPelicula(pMovie,&posiciongregar);
-                printf("pelicula agregada exitosamente");
+                printf("pelicula agregada exitosamente\n");
+                     system("pause");
+                        system("cls");
+
 
                 break;
                 case 2:
                 pMovie=(void*)malloc(sizeof(EMovie));
                 if(borrarPelicula(pMovie,&posiciongregar))
                 {
-                    printf("pelicula borrada exitosamente");
+                    printf("pelicula borrada exitosamente\n");
+                     system("pause");
+                        system("cls");
+                        break;
                 }
 
                     break;
@@ -41,12 +47,19 @@ int main()
                 pMovie=(void*)malloc(sizeof(EMovie));
                          if(modificarpelicula(pMovie))
                          {
-                            printf("pelicula modificada exitosamente");
+                            printf("pelicula modificada exitosamente\n");
+                             system("pause");
+                        system("cls");
+                        break;
                          }
                    break;
               case 4:
                      pMovie=(void*)malloc(sizeof(EMovie));
                     generarPagina(pMovie,"index.html");
+                     system("pause");
+                        system("cls");
+                        break;
+
                 break;
 
             case 5:
