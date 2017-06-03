@@ -8,7 +8,7 @@ int main()
     char seguir='s';
     int opcion=0;
     EMovie *pMovie;
-    int posiciongregar=0;//maximo indice del tamaÃ±o  de la lista de peliculas
+    int posiciongregar=0;//maximo indice del tamaño  de la lista de peliculas
     char pathArchPelicula[]={"peliculas.dat"};
 
 
@@ -25,7 +25,7 @@ int main()
                 case 1:
                 pMovie=(void*)malloc(sizeof(EMovie));
                 pMovie->estado=0;
-                agregarPelicula(pMovie,&posiciongregar);//mas adelante abris desde aca el archivo y cerrarlo atras
+                agregarPelicula(pMovie,&posiciongregar);
                 printf("pelicula agregada exitosamente");
 
                 break;
@@ -45,6 +45,7 @@ int main()
                          }
                    break;
               case 4:
+                     pMovie=(void*)malloc(sizeof(EMovie));
                     generarPagina(pMovie,"index.html");
                 break;
 

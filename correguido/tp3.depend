@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1496447117 source:c:\users\alumno\desktop\tp3\main.c
+	"header.h"
+
+1496447422 c:\users\alumno\desktop\tp3\header.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1496447536 source:c:\users\alumno\desktop\tp3\funciones.c
+	"header.h"
+

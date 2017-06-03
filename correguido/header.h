@@ -88,6 +88,7 @@ int borrarPelicula(EMovie* pmovie, int* posicionagregar);
  *  Genera un archivo html a partir de las peliculas cargadas en el archivo binario.
  *  @param lista la lista de peliculas a ser agregadas en el archivo.
  *  @param nombre el nombre para el archivo.
+ *  @return retorna 1 si pude generar la pelicula exitosamente 0 si no puede
  */
 void generarPagina(EMovie* pmovie, char nombre[]);
 
@@ -102,11 +103,17 @@ void generarPagina(EMovie* pmovie, char nombre[]);
 int cargarEstructura(FILE* archivo,EMovie* pmovie,int* posicionAgregar );
 
 
-
+/** \brief
+ *  abre un archivo  en modo binario
+ * \param nombrearchivo[] char   nombrede archivo que buscara o creara
+ * \param EMovie* puntero a  una lista de estructuras emovie
+ * \return retotna  un puntero FILE* si pudo agregar NULL si no lo pudo abrir
+ *
+ */
 
 FILE*  abrirarchivo(FILE *archivo,char nombrearchivo[],char modo[]);
 
-int cargararchivo(EMovie* Pmovie,int* cantidadPeliculas );
+
 
 /** \brief
  *  compruba  la existencia de una pelicula desde una estructura emmovie a un archivo binario

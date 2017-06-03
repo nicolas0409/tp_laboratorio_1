@@ -76,74 +76,9 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
     return archivo;
 }
 
-int cargarEstructura(FILE* archivo, EMovie* pmovie, int *posicionAgregar)
-{
-    int retorno=0;
 
 
-        if(fread((void*)(pmovie+(*posicionAgregar)),sizeof(EMovie),1,archivo))
-        {
 
-                if(!feof(archivo))//final del atchivo no hay mas estructuras que agregar
-                {
-                    retorno=1;
-                }
-                else
-                {
-                 retorno =0;
-                }
-        }
-return retorno;
-}
-
-int cargararchivo(EMovie* pMovie, int* posicionagregar)
-{
-
-
-FILE*archivo2;
-
-int cantidad;
-
-
-    archivo2=abrirarchivo(archivo2,"peliculas.dat","rb");
-    if(archivo2==NULL)
-    {
-      archivo2=abrirarchivo(archivo2,"peliculas.dat","wb");
-      if(archivo2==NULL)
-      {
-          printf("no se  pudo abrir el achivo\n");
-          exit(0);
-      }
-    }
-    if(archivo2!=NULL)
-    {
-        while(fread((void*)(pMovie+(*posicionagregar)),sizeof(EMovie),1,archivo2))
-        {
-                (*posicionagregar)++;
-                cantidad=(*posicionagregar)+1;
-                pMovie=(void*)realloc(pMovie,sizeof(EMovie)*cantidad);
-               if( pMovie==NULL)
-               {   printf("no se pudo asignar mas memoria\n");
-                    fclose(archivo2);
-                   exit(0);
-
-               }
-               else
-               {
-
-                   (pMovie+(*posicionagregar))->estado=0;
-
-               }
-
-
-            }
-
-      }
-    fclose(archivo2);
-
-return (*posicionagregar);
-
-}
 
 int agregarPelicula(EMovie* pmovie, int* posicionagregar)
 {
@@ -176,7 +111,7 @@ int agregarPelicula(EMovie* pmovie, int* posicionagregar)
             while(fread((void*)(pmovie+contador),sizeof(EMovie),1,archivo2))
             {
                     contador++;
-                    (*posicionagregar)++;
+
                     cantidad=contador+1;
                     pmovie=(EMovie*)realloc(pmovie,sizeof(EMovie)*cantidad);
                    if( pmovie==NULL)
@@ -241,6 +176,7 @@ archivo=abrirarchivo(archivo,"peliculas.dat","wb");
 
     free(pmovie);
     fclose(archivo);
+return 1;
 }
 int borrarPelicula(EMovie* pmovie, int* posicionagregar)
 {
@@ -251,7 +187,7 @@ int borrarPelicula(EMovie* pmovie, int* posicionagregar)
 
     FILE* archivo;
     int estado=1;
-    FILE*archivo2;
+    FILE* archivo2;
     int cantidad;
     int contador=0;
     int i;
@@ -542,9 +478,109 @@ void generarPagina(EMovie *pmovie, char nombre[])
 
 char head[]={"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta http-equiv='X-UA-Compatible' content='IE=edge'><meta name='viewport' content='width=device-width, initial-scale=1'> <title>Lista peliculas</title><link href='css/bootstrap.min.css' rel='stylesheet'><link href='css/custom.css' rel='stylesheet'><script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script><script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script></head><body><div class='container'><div class='row'>"};
 
-char body[]={"</div></div><script src='js/jquery-1.11.3.min.js'></script><script src='js/bootstrap.min.js'></script><script src='js/ie10-viewport-bug-workaround.js'></script><script src='js/holder.min.js'></script></body></html>"};
+char footer[]={"</div></div><script src='js/jquery-1.11.3.min.js'></script><script src='js/bootstrap.min.js'></script><script src='js/ie10-viewport-bug-workaround.js'></script><script src='js/holder.min.js'></script></body></html>"};
+
+char link[]={"<article class='col-md-4 article-intro'><a href='#'><img class='img-responsive img-rounded' src='"};
+
+char titulo[]={"' alt=''></a><h3><a href='#'>"};
+
+char genero[]={"</a></h3><ul><li>Genero:"};
+
+char puntaje[]={"</li><li>Puntaje:"};
+
+char duracion[]={"</li><li>Duracion:"};
+
+char descripcion[]={"</li></ul><p>"};
+
+char final[]={"</p></article>"};
 
 
 
+FILE* archivo;
+
+FILE*archivo2;
+int cantidad;
+int contador=0;
+int i;
+
+
+
+    archivo2=abrirarchivo(archivo2,"peliculas.dat","rb");
+    if(archivo2==NULL)
+    {
+      archivo2=abrirarchivo(archivo2,"peliculas.dat","wb");
+      if(archivo2==NULL)
+      {
+          printf("no se  pudo abrir el achivo\n");
+          free(pmovie);
+
+          exit(0);
+
+      }
+    }
+    if(archivo2!=NULL)
+    {
+        while(fread((void*)(pmovie+contador),sizeof(EMovie),1,archivo2))
+        {
+                contador++;
+
+                cantidad=contador+1;
+                pmovie=(EMovie*)realloc(pmovie,sizeof(EMovie)*cantidad);
+               if( pmovie==NULL)
+               {   printf("no se pudo asignar mas memoria\n");
+                    fclose(archivo2);
+                    free(pmovie);
+
+                   exit(0);
+
+               }
+               else
+               {
+
+                   (pmovie+(contador))->estado=0;
+
+               }
+
+
+            }
+        fclose(archivo2);
+      }
+
+
+    archivo=abrirarchivo(archivo,"index.html","w");
+        if(archivo==NULL)
+        {
+            printf("error al abrir el archivo");
+            free(pmovie);
+
+            exit(0);
+        }
+
+    fwrite(head,strlen(head),1,archivo);
+    for(i=0;i<(contador);i++)
+    {
+    fwrite(link,strlen(link),1,archivo);
+    fwrite((pmovie+i)->linkImagen,strlen((pmovie+i)->linkImagen),1,archivo);
+    fwrite(titulo,strlen(titulo),1,archivo);
+    fwrite((pmovie+i)->titulo,strlen((pmovie+i)->titulo),1,archivo);
+    fwrite(genero,strlen(genero),1,archivo);
+    fwrite((pmovie+i)->genero,strlen((pmovie+i)->genero),1,archivo);
+    fwrite(puntaje,strlen(puntaje),1,archivo);
+    fprintf(archivo,"%d",((pmovie+i)->puntaje));
+    //fwrite(c),4,1,archivo);
+    fwrite(duracion,strlen(duracion),1,archivo);
+     fprintf(archivo,"%d",((pmovie+i)->duracion));
+    fwrite(descripcion,strlen(descripcion),1,archivo);
+    fwrite(((pmovie+i)->descripcion),strlen((pmovie+i)->descripcion),1,archivo);
+    fwrite(final,strlen(final),1,archivo);
+
+
+    }
+    fwrite(footer,strlen(footer),1,archivo);
+    free(pmovie);
+
+
+    fclose(archivo);
 
 }
+
